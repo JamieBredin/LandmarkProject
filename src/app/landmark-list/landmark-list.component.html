@@ -1,0 +1,20 @@
+<h2>All Landmark Information</h2>
+
+<thead>
+    <tr>
+      <th>Id</th>
+      <th>X Coordinates</th>
+      <th>Y Coordinates</th>
+      <th>Z Coordinates</th>
+      <th>Country Name</th>
+      <th>Landmark Name</th>
+      <th>Town Name</th>
+      <th>Country Captial</th>
+      <th>Notes</th>
+    </tr>
+</thead>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
+<app-landmark *ngFor='let l of landmarks' [landmark]="l">
+
+
+  
