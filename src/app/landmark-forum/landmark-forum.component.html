@@ -1,8 +1,7 @@
 <form [formGroup]="landmarkForm" class="form-group" class="container-md">
     <div class="mb-3">
         <label for="xCoordinates">X Coordinates</label>
-        <input id="xCoordinates" type="number" formControlName="xCoordinates" class="form-control">
-        {{landmark._id}}
+        <input id="xCoordinates" type="number" formControlName="xCoordinates" class="form-control" placeholder="{{landmark.xCoordinates}}" >
     </div>
     <div class="mb-3">
         <label for="yCoordinates">Y Coordinates</label>
@@ -36,3 +35,6 @@
 <button type="submit" (click)="onSubmit()">Submit</button>
 
 </form>
+
+
+

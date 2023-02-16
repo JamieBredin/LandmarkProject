@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DummyLandmarkService } from '../dummy-landmark.service';
 import { Landmark } from '../landmark';
+import { LandmarkForumComponent } from '../landmark-forum/landmark-forum.component';
 import { LandmarkService } from '../landmark.service';
 
 @Component({
@@ -12,14 +13,16 @@ import { LandmarkService } from '../landmark.service';
 export class LandmarkComponent implements OnInit {
   landmarks: Landmark[] = [];
   message: String = ''
+ showModal:  Boolean = false
   @Input() landmark!: Landmark;
   //@Output() landmarkFormClose = new EventEmitter<Landmark>();
   landmarkForm : FormGroup = new FormGroup({});
   currentLandmark! : Landmark;
-  constructor(private landmarkService : LandmarkService) { }
+  currentID: String=''
+    constructor(private landmarkService : LandmarkService) { }
 
   ngOnInit(): void {
-  
+  this.currentID=this.landmark._id
     this.landmarkForm = new FormGroup({
     xCoordinates: new FormControl (''),        
     yCoordinates: new FormControl (''),
@@ -45,6 +48,21 @@ export class LandmarkComponent implements OnInit {
     // }
     //this.landmarkFormClose.emit(this.landmarkForm?.value);
   }
+
+
+  @ViewChild(LandmarkForumComponent) addView !:LandmarkForumComponent
+
+
+updateLandmark(id:string)
+{
+  this.showModal=true;
+  console.log(id);
+  //console.log(this.addView);
+  //this.addView.loadEditData(id);
+}
+
+
+
   addNewLandmark(newLandmark:Landmark):void{
     console.log('adding new landmark ' + JSON.stringify(newLandmark));
     this.landmarkService.addLandmark({ ...newLandmark})

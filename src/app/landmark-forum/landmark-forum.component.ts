@@ -28,9 +28,35 @@ export class LandmarkForumComponent implements OnInit {
   }
 
   onSubmit(){
-   
+    console.log('got here')
+    console.log('forms submitted with: ');
+    console.table(this.landmarkForm?.value);
+    this.updateCurrentLandmark(this.landmark._id,this.landmarkForm?.value)
+     // this.addNewLandmark(this.landmarkForm?.value)
   }
-   
+  
+// -----------------
+loadEditData(id:string)
+{
+  console.log(id);
+}
+//------------------
+
+  addNewLandmark(newLandmark:Landmark):void{
+    console.log('adding new landmark ' + JSON.stringify(newLandmark));
+    this.landmarkService.addLandmark({ ...newLandmark})
+    .subscribe({
+      next: landmark => {
+        console.log(JSON.stringify(landmark) + ' has been added');
+        this.message = "new landmark has been added";
+      },
+      error: (err) => this.message =err
+    });
+    // so the updated list appears
+    this.ngOnInit();
+    window.location.reload();
+
+  }
 
 updateCurrentLandmark(id: string, landmark: Landmark): void {
   console.log('updating ');
@@ -42,6 +68,7 @@ updateCurrentLandmark(id: string, landmark: Landmark): void {
         this.message = " landmark has been updated";
         //this.currentlandmark = undefined;
         this.ngOnInit();
+        window.location.reload();
       },
       error: (err) => this.message = err
     });}
