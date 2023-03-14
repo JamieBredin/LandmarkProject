@@ -13,7 +13,9 @@ export class LandmarkForumComponent implements OnInit {
   constructor(private landmarkService : LandmarkService) { }
   landmarkForm : FormGroup = new FormGroup({});
   message: String = ''
-  @Input() landmark!: Landmark
+  @Input() landmark?: Landmark
+
+
   ngOnInit(): void {
     this.landmarkForm = new FormGroup({
       xCoordinates: new FormControl (''),        
@@ -31,8 +33,22 @@ export class LandmarkForumComponent implements OnInit {
     console.log('got here')
     console.log('forms submitted with: ');
     console.table(this.landmarkForm?.value);
-    this.updateCurrentLandmark(this.landmark._id,this.landmarkForm?.value)
-     // this.addNewLandmark(this.landmarkForm?.value)
+   // console.log(this.landmarkName)
+   console.log("THE ID: "+this.landmark?._id)
+    if(this.landmark?._id == null)
+    {
+      this.addNewLandmark(this.landmarkForm?.value)
+    }
+    else
+    {
+      this.updateCurrentLandmark(this.landmark._id,this.landmarkForm?.value)
+    }
+     //this.addNewLandmark(this.landmarkForm?.value)
+  }
+
+  get landmarkName()
+  {
+    return this.landmarkForm.get('landmarkName')?.value
   }
   
 // -----------------
