@@ -51,50 +51,20 @@ changeBool()
   this.showModal=false;
 }
 
-//--------------------
-//   addNewLandmark(newLandmark:Landmark):void{
-//     console.log('adding new landmark ' + JSON.stringify(newLandmark));
-//     this.landmarkService.addLandmark({ ...newLandmark})
-//     .subscribe({
-//       next: landmark => {
-//         console.log(JSON.stringify(landmark) + ' has been added');
-//         this.message = "new landmark has been added";
-//       },
-//       error: (err) => this.message =err
-//     });
-//     // so the updated list appears
-//     this.ngOnInit();
-//     window.location.reload();
-
-//   }
-// deleteCurrentLandmark(id:string)
-// {
-//   console.log("Deleting Landmark");
-//   this.landmarkService.deleteLandmark(id)
-//   .subscribe({
-//     next: landmark => {
-//       console.log(JSON.stringify(landmark) + ' has been deleted');
-//       this.message = "landmark has been successfully deleted";
-//     },
-//     error: (err) => this.message = err
-//   });
-//   this.ngOnInit();
-//   window.location.reload();
-// }
+deleteCurrentLandmark(id:string)
+{
+  console.log("Deleting Landmark");
+  this.landmarkService.deleteLandmark(id)
+  .subscribe({
+    next: landmark => {
+      console.log(JSON.stringify(landmark) + ' has been deleted');
+      this.message = "landmark has been successfully deleted";
+    },
+    error: (err) => this.message = err
+  });
+  this.ngOnInit();
+  window.location.reload();
+}
 
 
-// updateCurrentLandmark(id: string, landmark: Landmark): void {
-//   console.log('updating ');
-//   console.table (landmark);
-//   this.landmarkService.updateLandmark(id, landmark)
-//     .subscribe({
-//       next: landmark => {
-//         console.log(JSON.stringify(landmark) + ' has been updated');
-//         this.message = " landmark has been updated";
-//         //this.currentlandmark = undefined;
-//         this.ngOnInit();
-//       },
-//       error: (err) => this.message = err
-//     });
-//}
 }

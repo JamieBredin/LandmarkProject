@@ -15,7 +15,6 @@ export class LandmarkForumComponent implements OnInit {
   message: String = ''
   @Input() landmark?: Landmark
 
-
   ngOnInit(): void {
     this.landmarkForm = new FormGroup({
       xCoordinates: new FormControl (''),        
@@ -43,7 +42,6 @@ export class LandmarkForumComponent implements OnInit {
     {
       this.updateCurrentLandmark(this.landmark._id,this.landmarkForm?.value)
     }
-     //this.addNewLandmark(this.landmarkForm?.value)
   }
 
   get landmarkName()
