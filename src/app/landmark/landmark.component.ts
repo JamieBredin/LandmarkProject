@@ -40,6 +40,7 @@ export class LandmarkComponent implements OnInit {
 
   addLandmark()
   {
+   
   this.showModal=true;
   }
 updateLandmark()
