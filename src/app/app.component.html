@@ -1,2 +1,40 @@
-<app-landmark-list></app-landmark-list>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/landmarks" routerLinkActive="active">Landmarks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  *ngIf="isAuthenticated$ | async" routerLink="/profile" routerLinkActive="active">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  *ngIf="userRoleToken == 'Admin'" routerLink="/profile" routerLinkActive="active">Your Dad</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+            <button type="button" *ngIf="!(isAuthenticated$ | async)" class="btn btn-primary col-6 px-3 me-2" 
+            (click)=handleLogin()>
+                Login
+            </button>
+            <button type="button" *ngIf="!(isAuthenticated$ | async)" class="btn btn-secondary col-6 px-3 me-2" 
+            (click)=handleSignUp()>
+                SignUp
+            </button>
+            <button *ngIf="isAuthenticated$ | async"
+            class="btn btn-primary me-3"
+            (click)= handleLogout()>
+                Log Out
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+<button (click)="clickME()">CLICK MEEMMEMEMEME</button>
+<!-- <app-landmark-list></app-landmark-list> -->
 <router-outlet></router-outlet>
