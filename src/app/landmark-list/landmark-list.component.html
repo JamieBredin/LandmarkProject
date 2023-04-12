@@ -1,23 +1,38 @@
-<button (click)="onclick()" type="button" class="btn  btn-danger">
+<!-- <button (click)="onclick()" type="button" class="btn  btn-danger">
   {{ReadMore?"Read More":"Read Less"}}
-</button>
+</button> -->
 <!-- <ng-container *ngIf="visible"> -->
-<h2>All Landmark Information</h2>
+<h2>your Landmark Tracker</h2>
 
-<thead>
+<!-- <thead>
     <tr>
       <th>Id</th>
-      <th>X Coordinates</th>
-      <th>Y Coordinates</th>
-      <th>Z Coordinates</th>
       <th>Country Name</th>
       <th>Landmark Name</th>
-      <th>Town Name</th>
-      <th>Country Captial</th>
+      <th>City Name</th>
       <th>Notes</th>
     </tr>
-</thead>
+</thead> -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add</button>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      Country Name
+    </div>
+    <div class="col">
+      Landmark Name
+    </div>
+    <div class="col">
+    City Name
+    </div>
+    <div class="col">
+      Notes
+    </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
 
 <app-landmark *ngFor='let l of landmarks' [landmark]="l">
   </app-landmark>
@@ -27,7 +42,7 @@
   <H1>UR DAD</H1>
   <app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
 </ng-container> -->
-<app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
+<!-- <app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum> -->
 
 
 

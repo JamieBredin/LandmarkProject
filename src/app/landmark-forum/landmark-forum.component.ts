@@ -17,13 +17,9 @@ export class LandmarkForumComponent implements OnInit {
 
   ngOnInit(): void {
     this.landmarkForm = new FormGroup({
-      xCoordinates: new FormControl (''),        
-      yCoordinates: new FormControl (''),
-      zCoordinates: new FormControl(''),
       countryName: new FormControl(''),
       landmarkName: new FormControl(''),
-      townName: new FormControl(''),
-      countryCaptial: new FormControl(''),
+      cityName: new FormControl(''),
       notes: new FormControl('')
   })
   }

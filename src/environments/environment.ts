@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUri : 'http://localhost:3000',
+  apiUri : 'http://localhost:3000',//change this to api gateway
   auth0:
   {
     domain:'dev-giq6rr8zna5v1l02.us.auth0.com',

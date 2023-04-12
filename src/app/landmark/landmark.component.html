@@ -1,25 +1,40 @@
-
-<div class="container mt-5">
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      {{landmark.countryName}}
+    </div>
+    <div class="col">
+      {{landmark.landmarkName}}
+    </div>
+    <div class="col">
+      {{landmark.cityName}}
+    </div>
+    <div class="col">
+      {{landmark.notes}}
+    </div>
+    <div class="col">
+      <button  type="button" class="btn btn-primary"(click)="updateLandmark()">Update</button>
+      <button type="button" class="btn btn-danger" (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
+    </div>
+  </div>
+</div>
+<!-- <div class="container mt-5">
     <table class="table table-striped">
       <tbody>
         <tr>
           <td>{{ landmark._id }}</td>
-          <td>{{ landmark.xCoordinates }}</td>
-          <td>{{ landmark.yCoordinates}}</td>
-          <td>{{ landmark.zCoordinates }}</td>
           <td>{{ landmark.countryName }}</td>
           <td>{{ landmark.landmarkName }}</td>
-          <td>{{ landmark.townName }}</td>
-          <td>{{ landmark.countryCaptial }}</td>
+          <td>{{ landmark.cityName }}</td>
           <td>{{ landmark.notes }}</td>
           <button (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
-          <button (click)="updateLandmark()">Update</button>
+          <button (click)="updateLandmark()">Update</button> -->
           <!-- <button (click)="updateCurrentLandmark(l._id,l)">Update</button> -->
   <!-- <button id="updateBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" (click)="updateLandmark()">Update</button> -->
-        </tr>
+        <!-- </tr>
       </tbody>
     </table>
-  </div> 
+  </div>  -->
 
 <!-- Modal -->
  <!-- <div *ngIf='showModal'>
