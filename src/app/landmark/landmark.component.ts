@@ -15,7 +15,6 @@ export class LandmarkComponent implements OnInit {
   landmarks: Landmark[] = [];
   message: String = ''
  showModal:  Boolean = false
- addBtnCounter : number = 1
   @Input() landmark!: Landmark;
   //@Output() landmarkFormClose = new EventEmitter<Landmark>();
   landmarkForm : FormGroup = new FormGroup({});
@@ -24,25 +23,10 @@ export class LandmarkComponent implements OnInit {
     constructor(private landmarkService : LandmarkService) { }
 
   ngOnInit(): void {
-    this.addBtnCounter= this.addBtnCounter+1;
   this.currentID=this.landmark._id
-    this.landmarkForm = new FormGroup({
-    xCoordinates: new FormControl (''),        
-    yCoordinates: new FormControl (''),
-    zCoordinates: new FormControl(''),
-    countryName: new FormControl(''),
-    landmarkName: new FormControl(''),
-    townName: new FormControl(''),
-    countryCaptial: new FormControl(''),
-    notes: new FormControl('')
-})
+
   }
 
-  addLandmark()
-  {
-   
-  this.showModal=true;
-  }
 updateLandmark()
 {
   this.showModal=true;

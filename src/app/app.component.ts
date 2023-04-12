@@ -2,7 +2,6 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +11,7 @@ export class AppComponent {
   userRoleToken?: string
   title = 'landmarkProject';
   isAuthenticated$ = this.auth.isAuthenticated$
+  public userID!:String |undefined
   constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService,private router: Router)
   {
   }

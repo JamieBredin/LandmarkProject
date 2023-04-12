@@ -9,7 +9,6 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class ProfileComponent implements OnInit {
 
- public userID!:String|undefined
   user$ = this.auth.user$;
   code$ = this.user$.pipe(map((user) => JSON.stringify(user, null)));
 
@@ -18,7 +17,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
       console.log(user);
-      this.userID = user?.sub?.toString();
      // console.log(user['https://your-auth0-namespace/roles']);
     });
   }

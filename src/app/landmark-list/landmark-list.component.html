@@ -33,9 +33,10 @@
     </div>
   </div>
 </div>
-
-<app-landmark *ngFor='let l of landmarks' [landmark]="l">
+<div *ngFor='let l of landmarks'>
+<app-landmark *ngIf="l.userID === currentUserID" [landmark]="l">
   </app-landmark>
+</div>
 <!-- </ng-container> -->
 
 <!-- <ng-container *ngIf="formVisible">

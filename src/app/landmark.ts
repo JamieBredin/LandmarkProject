@@ -3,6 +3,7 @@ export interface Landmark {
      countryName:String,
      landmarkName:String,
      cityName: String,
-     notes:String
+     notes:String,
+     userID:String
 
 }

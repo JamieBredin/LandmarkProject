@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Landmark } from '../landmark';
 import { LandmarkService } from '../landmark.service';
-
+import { ProfileComponent } from '../profile/profile.component';
+import { UserServiceService } from '../user-service.service';
 @Component({
   selector: 'app-landmark-forum',
   templateUrl: './landmark-forum.component.html',
@@ -10,17 +11,18 @@ import { LandmarkService } from '../landmark.service';
 })
 export class LandmarkForumComponent implements OnInit {
 
-  constructor(private landmarkService : LandmarkService) { }
+  constructor(private landmarkService : LandmarkService, private userService : UserServiceService) { }
   landmarkForm : FormGroup = new FormGroup({});
   message: String = ''
   @Input() landmark?: Landmark
-
+  userID!:String
   ngOnInit(): void {
     this.landmarkForm = new FormGroup({
       countryName: new FormControl(''),
       landmarkName: new FormControl(''),
       cityName: new FormControl(''),
-      notes: new FormControl('')
+      notes: new FormControl(''),
+      userID: new FormControl(this.userService.getUserID())
   })
   }
 
