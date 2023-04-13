@@ -42,7 +42,7 @@
 </div>
 
 <div *ngIf="currentUserRole === 'Admin'">
-  <div *ngFor='let l of landmarks; let i = index'>
+  <div *ngFor='let l of landmarks; let i = index' >
     <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
       <app-landmark [landmark]="l">
     </app-landmark>
