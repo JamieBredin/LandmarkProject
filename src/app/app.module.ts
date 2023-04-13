@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TrendingListComponent } from './trending-list/trending-list.component';
+import { KeyValuePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TrendingListComponent } from './trending-list/trending-list.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    KeyValuePipe,
     AuthModule.forRoot({...environment.auth0,
     httpInterceptor:{
       allowedList: [`${environment.apiUri}/landmarks`],

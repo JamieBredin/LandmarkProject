@@ -1,6 +1,5 @@
 
 <h2>your Landmark Tracker</h2>
-
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add</button>
 
 <div class="container text-center">
@@ -26,7 +25,7 @@
 </div>
 
 
-<div *ngIf="currentUserRole !== 'Admin'">
+ <div *ngIf="currentUserRole !== undefined && currentUserRole !== 'Admin'">
 
 <div *ngFor='let l of landmarks; let i = index'>
   <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
@@ -34,14 +33,14 @@
   </app-landmark>
   </div>
   <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
-<app-landmark   *ngIf="l.userID === currentUserID" [landmark]="l">
+<app-landmark  *ngIf="l.userID === currentUserID" [landmark]="l">
   </app-landmark>
   </div>
 </div>
 
-</div>
+</div> 
 
-<div *ngIf="currentUserRole === 'Admin'">
+ <div *ngIf="currentUserRole !== undefined && currentUserRole === 'Admin'">
   <div *ngFor='let l of landmarks; let i = index' >
     <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
       <app-landmark [landmark]="l">
@@ -54,6 +53,14 @@
 </div>
 </div>
 
+<!-- 
+ <div *ngFor="let landmark of landmarks | keyvalue">
+  <h3>{{ landmark.value }}</h3>
+</div>
+
+<div *ngFor="let landmark of landmarks">
+  <h3>{{ landmark._id }}</h3>
+</div>  -->
 
 
 <!-- Modal -->

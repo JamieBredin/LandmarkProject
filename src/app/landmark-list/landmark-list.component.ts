@@ -4,6 +4,7 @@ import { Landmark } from '../landmark';
 import { LandmarkService } from '../landmark.service';
 import { UserServiceService } from '../user-service.service';
 
+
 @Component({
   selector: 'app-landmark-list',
   templateUrl: './landmark-list.component.html',
@@ -27,8 +28,11 @@ export class LandmarkListComponent implements OnInit {
       next: (value: Landmark[]) => this.landmarks = value,
       complete: () => console.log('landmark service finished'),
       error: (message) => this.message = message
+      
 })
+
 }
+
 
 ReadMore:boolean = true
 

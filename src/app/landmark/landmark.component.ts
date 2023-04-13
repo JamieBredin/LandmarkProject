@@ -49,7 +49,7 @@ deleteCurrentLandmark(id:string)
     error: (err) => this.message = err
   });
   this.ngOnInit();
-  window.location.reload();
+  //window.location.reload();
 }
 
 

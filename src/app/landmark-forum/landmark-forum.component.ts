@@ -31,23 +31,6 @@ export class LandmarkForumComponent implements OnInit {
   })
   }
 
-  //Method to try allow admin to update
-// userIDMethod()
-// {
-//   if(this.landmark?.userID == null && this.currentUserRole == 'Admin')
-//   {
-//     return '1'
-//   }
-//   else if(this.landmark?.userID!=null)
-//   {
-//     return this.landmark?.userID
-//   }
-//   else
-//   {
-//     return this.userService.getUserID();
-
-//   }
-// }
   onSubmit(){
     console.log('got here')
     console.log('forms submitted with: ');
@@ -88,7 +71,7 @@ loadEditData(id:string)
     });
     // so the updated list appears
     this.ngOnInit();
-    window.location.reload();
+    //window.location.reload();
 
   }
 
