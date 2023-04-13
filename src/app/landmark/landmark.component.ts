@@ -17,7 +17,6 @@ export class LandmarkComponent implements OnInit {
   message: String = ''
  showModal:  Boolean = false
   @Input() landmark!: Landmark;
-  //@Output() landmarkFormClose = new EventEmitter<Landmark>();
   landmarkForm : FormGroup = new FormGroup({});
   currentLandmark! : Landmark;
   currentID: String=''

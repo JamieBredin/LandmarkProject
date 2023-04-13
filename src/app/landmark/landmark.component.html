@@ -51,51 +51,9 @@
     </div>
   </div>
 </div>
-<!-- <div class="container mt-5">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <td>{{ landmark._id }}</td>
-          <td>{{ landmark.countryName }}</td>
-          <td>{{ landmark.landmarkName }}</td>
-          <td>{{ landmark.cityName }}</td>
-          <td>{{ landmark.notes }}</td>
-          <button (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
-          <button (click)="updateLandmark()">Update</button> -->
-          <!-- <button (click)="updateCurrentLandmark(l._id,l)">Update</button> -->
-  <!-- <button id="updateBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" (click)="updateLandmark()">Update</button> -->
-        <!-- </tr>
-      </tbody>
-    </table>
-  </div>  -->
 
-<!-- Modal -->
- <!-- <div *ngIf='showModal'>
-  <button type="button" class="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
-</div>
-<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" #myModal>
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Add an Artist</h5>
-        <button type="button" class="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="changeBool()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div> -->
     <div *ngIf='showModal'>
       <button type="button" id="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-        <!-- <span aria-hidden="true">&times;</span> -->
         Close
       </button>
       <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
