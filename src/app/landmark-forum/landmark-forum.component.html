@@ -15,9 +15,15 @@
   <label for="notes">Notes</label>
   <input id="notes" type="text" formControlName="notes" class="form-control">
 </div>
-
-<button type="submit" (click)="onSubmit()">Submit</button>
-
+<div *ngIf="currentUserRole==='Admin'" class="mb-3">
+  <label for="userID">User ID</label>
+  <input id="userID" type="text" formControlName="userID" class="form-control">
+</div>
+<!-- <button type="submit" (click)="onSubmit()">Submit</button> -->
+<div class="modal-footer">
+  <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+  <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+</div>
 </form>
 
 

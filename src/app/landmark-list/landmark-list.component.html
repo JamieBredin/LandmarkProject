@@ -29,13 +29,41 @@
     <div class="col">
       Notes
     </div>
-    <div class="col">
+    <div *ngIf="currentUserRole==='Admin'"class="col-2">
+      User ID
+    </div>
+    <div class="col-4">
     </div>
   </div>
 </div>
-<div *ngFor='let l of landmarks'>
-<app-landmark *ngIf="l.userID === currentUserID" [landmark]="l">
+
+
+<div *ngIf="currentUserRole !== 'Admin'">
+
+<div *ngFor='let l of landmarks; let i = index'>
+  <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
+    <app-landmark  *ngIf="l.userID === currentUserID" [landmark]="l">
   </app-landmark>
+  </div>
+  <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
+<app-landmark   *ngIf="l.userID === currentUserID" [landmark]="l">
+  </app-landmark>
+  </div>
+</div>
+
+</div>
+
+<div *ngIf="currentUserRole === 'Admin'">
+  <div *ngFor='let l of landmarks; let i = index'>
+    <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
+      <app-landmark [landmark]="l">
+    </app-landmark>
+    </div>
+    <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
+  <app-landmark  [landmark]="l">
+    </app-landmark>
+    </div>
+</div>
 </div>
 <!-- </ng-container> -->
 
@@ -54,17 +82,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel">Add an Landmark</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
+      <button type="button" id="close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> -->
     </div>
 
   

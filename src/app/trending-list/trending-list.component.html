@@ -1,0 +1,49 @@
+<button *ngIf="currentUserRole==='Admin'"type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add</button>
+
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        Country Name
+      </div>
+      <div class="col">
+        Landmark Name
+      </div>
+      <div class="col">
+      City Name
+      </div>
+      <div class="col">
+        Notes
+      </div>
+      <div *ngIf="currentUserRole === 'Admin'" class="col">
+    </div>
+    <div *ngIf="currentUserRole === 'Admin'" class="col">
+    </div>
+</div>
+
+  </div>
+  <div *ngFor='let l of landmarks; let i = index'>
+    <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
+      <app-landmark  *ngIf="l.userID === '1'" [landmark]="l">
+    </app-landmark>
+    </div>
+    <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
+  <app-landmark   *ngIf="l.userID === '1'" [landmark]="l">
+    </app-landmark>
+    </div>
+  
+  </div>
+
+  <!-- Modal -->
+<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" #myModal>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Add an Landmark</h5>
+          
+        <button type="button" id="close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
+        </div>
+       
+      </div>

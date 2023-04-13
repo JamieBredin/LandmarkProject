@@ -10,6 +10,7 @@ export class UserServiceService {
   constructor(public auth: AuthService) { }
   user$ = this.auth.user$;
   public userID!:String|undefined
+  userRoleToken?: string
   getUserID()
   {
     this.auth.user$.subscribe(user => {
@@ -17,5 +18,13 @@ export class UserServiceService {
       this.userID = user?.sub?.toString();
   });
   return this.userID
+}
+getUserRole()
+{
+  this.auth.getIdTokenClaims().subscribe((idToken) => {
+    console.log('JWT Token:', idToken!['user/roles'][0]);
+   this.userRoleToken = idToken!['user/roles'][0];
+});
+return this.userRoleToken;
 }
 }

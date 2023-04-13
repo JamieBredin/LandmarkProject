@@ -4,7 +4,7 @@ import { DummyLandmarkService } from '../dummy-landmark.service';
 import { Landmark } from '../landmark';
 import { LandmarkForumComponent } from '../landmark-forum/landmark-forum.component';
 import { LandmarkService } from '../landmark.service';
-
+import { UserServiceService } from '../user-service.service';
 @Component({
   selector: 'app-landmark',
   templateUrl: './landmark.component.html',
@@ -12,6 +12,7 @@ import { LandmarkService } from '../landmark.service';
 })
 export class LandmarkComponent implements OnInit {
   public tempLanmark !: Landmark;
+  currentUserRole!:String|undefined
   landmarks: Landmark[] = [];
   message: String = ''
  showModal:  Boolean = false
@@ -20,10 +21,11 @@ export class LandmarkComponent implements OnInit {
   landmarkForm : FormGroup = new FormGroup({});
   currentLandmark! : Landmark;
   currentID: String=''
-    constructor(private landmarkService : LandmarkService) { }
+    constructor(private landmarkService : LandmarkService,private userService : UserServiceService) { }
 
   ngOnInit(): void {
   this.currentID=this.landmark._id
+  this.currentUserRole= this.userService.getUserRole();
 
   }
 

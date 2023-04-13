@@ -2,7 +2,6 @@
 <ul *ngIf="user$ | async as user">
 <li>User Name: {{user.name}}</li>
 <li>User Email:{{ user.email }}</li>
-<li>User Role:{{user['roles']}}</li>
 </ul>
 
 <div *ngIf="code$ | async as code">

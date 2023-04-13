@@ -16,16 +16,38 @@ export class LandmarkForumComponent implements OnInit {
   message: String = ''
   @Input() landmark?: Landmark
   userID!:String
+  currentUserRole!:String|undefined
   ngOnInit(): void {
+    this.currentUserRole = this.userService.getUserRole();
     this.landmarkForm = new FormGroup({
-      countryName: new FormControl(''),
-      landmarkName: new FormControl(''),
-      cityName: new FormControl(''),
-      notes: new FormControl(''),
-      userID: new FormControl(this.userService.getUserID())
+      countryName: new FormControl(this.landmark?.countryName),
+      landmarkName: new FormControl(this.landmark?.landmarkName),
+      cityName: new FormControl(this.landmark?.cityName),
+      notes: new FormControl(this.landmark?.notes),
+      userID: new FormControl(
+        this.userService.getUserID())
+       //userID: new FormControl( this.userIDMethod()) 
+
   })
   }
 
+  //Method to try allow admin to update
+// userIDMethod()
+// {
+//   if(this.landmark?.userID == null && this.currentUserRole == 'Admin')
+//   {
+//     return '1'
+//   }
+//   else if(this.landmark?.userID!=null)
+//   {
+//     return this.landmark?.userID
+//   }
+//   else
+//   {
+//     return this.userService.getUserID();
+
+//   }
+// }
   onSubmit(){
     console.log('got here')
     console.log('forms submitted with: ');

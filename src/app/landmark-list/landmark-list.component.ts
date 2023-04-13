@@ -17,8 +17,14 @@ export class LandmarkListComponent implements OnInit {
   landmarkForm : FormGroup = new FormGroup({});
   landmarkTemp !: Landmark;
   currentUserID!:String|undefined
+  currentUserRole!:String|undefined
   ngOnInit(): void {
     this.currentUserID = this.userService.getUserID();
+    this.currentUserRole = this.userService.getUserRole();
+  //   while(this.currentUserID==null)
+  // {
+  //   this.currentUserID = this.userService.getUserID();
+  // }
     console.log("User ID = " + this.currentUserID?.toString())
     this.landmarkService.getLandmarks().subscribe({
       next: (value: Landmark[]) => this.landmarks = value,

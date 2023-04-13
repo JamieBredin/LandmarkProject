@@ -11,6 +11,7 @@ import {AuthModule, AuthHttpInterceptor} from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TrendingListComponent } from './trending-list/trending-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
     LandmarkForumComponent,
     LandmarkListComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    TrendingListComponent
   ],
   imports: [
     BrowserModule,
