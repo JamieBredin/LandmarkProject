@@ -1,53 +1,66 @@
-
-<div class="container mt-5">
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <td>{{ landmark._id }}</td>
-          <td>{{ landmark.xCoordinates }}</td>
-          <td>{{ landmark.yCoordinates}}</td>
-          <td>{{ landmark.zCoordinates }}</td>
-          <td>{{ landmark.countryName }}</td>
-          <td>{{ landmark.landmarkName }}</td>
-          <td>{{ landmark.townName }}</td>
-          <td>{{ landmark.countryCaptial }}</td>
-          <td>{{ landmark.notes }}</td>
-          <button (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
-          <button (click)="updateLandmark()">Update</button>
-          <!-- <button (click)="updateCurrentLandmark(l._id,l)">Update</button> -->
-  <!-- <button id="updateBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" (click)="updateLandmark()">Update</button> -->
-        </tr>
-      </tbody>
-    </table>
-  </div> 
-
-<!-- Modal -->
- <!-- <div *ngIf='showModal'>
-  <button type="button" class="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
+<!-- User Side  -->
+<div *ngIf="currentUserRole !== 'Admin'" class="container text-center">
+  <div class="card">
+    <div class="card-body">
+  <div class="row" style="padding: 10px;">
+    <div class="col" >
+      {{landmark.countryName}}
+    </div>
+    <div class="col" >
+      {{landmark.landmarkName}}
+    </div>
+    <div class="col" >
+      {{landmark.cityName}}
+    </div>
+    <div class="col" >
+      {{landmark.notes}}
+    </div>
+    <div class="col-4" *ngIf="landmark.userID!=='1'">
+      <button *ngIf="currentUserRole!=='Admin'"   type="button" class="btn btn-outline-success" style="margin-right: 10px;"(click)="deleteCurrentLandmark(landmark._id)">Completed</button>
+      <button *ngIf="currentUserRole!=='Admin'" type="button" class="btn btn-primary" style="margin-right: 10px;"(click)="updateLandmark()">Update</button>
+      <button type="button" class="btn btn-danger" (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
+    </div>
+    <div>
+      </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
-<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" #myModal>
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Add an Artist</h5>
-        <button type="button" class="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="changeBool()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div> -->
+<!-- Admin Side  -->
+<div *ngIf="currentUserRole === 'Admin'" class="container text-center">
+  <div class="card">
+    <div class="card-body">
+  <div class="row" style="padding: 10px;">
+    <div class="col" >
+      {{landmark.countryName}}
+    </div>
+    <div class="col" >
+      {{landmark.landmarkName}}
+    </div>
+    <div class="col" >
+      {{landmark.cityName}}
+    </div>
+    <div class="col" >
+      {{landmark.notes}}
+    </div>
+    <div *ngIf="currentUserRole==='Admin' && landmark.userID !== '1' "class="col-2" >
+      {{landmark.userID}}
+    </div>
+    <div class="col-4">
+      <button type="button" class="btn btn-danger" (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
+    </div>
+    <div>
+      
+      
+    </div>
+    </div>
+  </div>
+</div>
+
     <div *ngIf='showModal'>
-      <button type="button" class="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+      <button type="button" id="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
+        Close
       </button>
       <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
     </div>

@@ -1,35 +1,65 @@
-<button (click)="onclick()" type="button" class="btn  btn-danger">
-  {{ReadMore?"Read More":"Read Less"}}
-</button>
-<!-- <ng-container *ngIf="visible"> -->
-<h2>All Landmark Information</h2>
 
-<thead>
-    <tr>
-      <th>Id</th>
-      <th>X Coordinates</th>
-      <th>Y Coordinates</th>
-      <th>Z Coordinates</th>
-      <th>Country Name</th>
-      <th>Landmark Name</th>
-      <th>Town Name</th>
-      <th>Country Captial</th>
-      <th>Notes</th>
-    </tr>
-</thead>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add</button>
 
-<app-landmark *ngFor='let l of landmarks' [landmark]="l">
+<div class="container text-center">
+  <div class="row">
+    <div class="col" id="bigFont">
+      Country Name
+    </div>
+    <div class="col" id="bigFont">
+      Landmark Name
+    </div>
+    <div class="col" id="bigFont">
+    City Name
+    </div>
+    <div class="col" id="bigFont">
+      Notes
+    </div>
+    <div id="bigFont" *ngIf="currentUserRole==='Admin'"class="col-2">
+      User ID
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
+</div>
+
+
+ <div *ngIf="currentUserRole !== undefined && currentUserRole !== 'Admin'">
+
+<div *ngFor='let l of landmarks; let i = index'>
+  <div *ngIf="i%2===0">
+    <app-landmark  *ngIf="l.userID === currentUserID" [landmark]="l">
   </app-landmark>
-<!-- </ng-container> -->
+  </div>
+  <div *ngIf="i%2!==0">
+<app-landmark  *ngIf="l.userID === currentUserID" [landmark]="l">
+  </app-landmark>
+  </div>
+</div>
 
-<!-- <ng-container *ngIf="formVisible">
-  <H1>UR DAD</H1>
-  <app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
-</ng-container> -->
-<app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
+</div> 
 
+ <div *ngIf="currentUserRole !== undefined && currentUserRole === 'Admin'">
+  <div *ngFor='let l of landmarks; let i = index' >
+    <div *ngIf="i%2===0">
+      <app-landmark [landmark]="l">
+    </app-landmark>
+    </div>
+    <div *ngIf="i%2!==0">
+  <app-landmark  [landmark]="l">
+    </app-landmark>
+    </div>
+</div>
+</div>
 
+<!-- 
+ <div *ngFor="let landmark of landmarks | keyvalue">
+  <h3>{{ landmark.value }}</h3>
+</div>
+
+<div *ngFor="let landmark of landmarks">
+  <h3>{{ landmark._id }}</h3>
+</div>  -->
 
 
 <!-- Modal -->
@@ -38,17 +68,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel">Add an Landmark</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        
+      <button type="button" id="close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <app-landmark-forum [landmark]="landmarkTemp"></app-landmark-forum>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+     
     </div>
 
   

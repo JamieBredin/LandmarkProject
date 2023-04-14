@@ -4,7 +4,7 @@ import { DummyLandmarkService } from '../dummy-landmark.service';
 import { Landmark } from '../landmark';
 import { LandmarkForumComponent } from '../landmark-forum/landmark-forum.component';
 import { LandmarkService } from '../landmark.service';
-
+import { UserServiceService } from '../user-service.service';
 @Component({
   selector: 'app-landmark',
   templateUrl: './landmark.component.html',
@@ -12,37 +12,22 @@ import { LandmarkService } from '../landmark.service';
 })
 export class LandmarkComponent implements OnInit {
   public tempLanmark !: Landmark;
+  currentUserRole!:String|undefined
   landmarks: Landmark[] = [];
   message: String = ''
  showModal:  Boolean = false
- addBtnCounter : number = 1
   @Input() landmark!: Landmark;
-  //@Output() landmarkFormClose = new EventEmitter<Landmark>();
   landmarkForm : FormGroup = new FormGroup({});
   currentLandmark! : Landmark;
   currentID: String=''
-    constructor(private landmarkService : LandmarkService) { }
+    constructor(private landmarkService : LandmarkService,private userService : UserServiceService) { }
 
   ngOnInit(): void {
-    this.addBtnCounter= this.addBtnCounter+1;
   this.currentID=this.landmark._id
-    this.landmarkForm = new FormGroup({
-    xCoordinates: new FormControl (''),        
-    yCoordinates: new FormControl (''),
-    zCoordinates: new FormControl(''),
-    countryName: new FormControl(''),
-    landmarkName: new FormControl(''),
-    townName: new FormControl(''),
-    countryCaptial: new FormControl(''),
-    notes: new FormControl('')
-})
+  this.currentUserRole= this.userService.getUserRole();
+
   }
 
-  addLandmark()
-  {
-   
-  this.showModal=true;
-  }
 updateLandmark()
 {
   this.showModal=true;
@@ -64,7 +49,7 @@ deleteCurrentLandmark(id:string)
     error: (err) => this.message = err
   });
   this.ngOnInit();
-  window.location.reload();
+  //window.location.reload();
 }
 
 

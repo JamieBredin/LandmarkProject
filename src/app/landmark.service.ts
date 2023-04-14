@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Landmark } from './landmark';
 
@@ -10,9 +10,17 @@ import { Landmark } from './landmark';
 export class LandmarkService {
 private dataUri = `${environment.apiUri}/landmarks`;
   constructor(private http: HttpClient) { }
+
   getLandmarks():Observable<Landmark[]>{
     console.log("get landmarks called");
-    return this.http.get<Landmark[]>(`${this.dataUri}`)
+
+    //return this.http.get<Landmark[]>(`${this.dataUri}`)
+    return this.http.get<Landmark[]>(`${this.dataUri}`).pipe(
+      tap((response) => {
+        console.log("API response in LandmarkService:", response);
+      }),
+      catchError(this.handleError)
+    );
   }
   addLandmark(landmark: Landmark): Observable<Landmark>{
     return this.http.post<Landmark>(this.dataUri, landmark)

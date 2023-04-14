@@ -1,0 +1,19 @@
+
+<div class="container">
+  <h2 class="mt-5 mb-3">Profile Information</h2>
+  <div class="card mb-3">
+    <div class="card-body">
+      <ul class="list-group" *ngIf="user$ | async as user">
+        <li class="list-group-item">User Name: {{user.name}}</li>
+        <li class="list-group-item">User Email: {{user.email}}</li>
+        <li class="list-group-item">User Gender: {{user.gender}}</li>
+        <div class="text-center">
+          <img src={{user.picture}} alt="Profile picture" class="img-fluid rounded-circle shadow-lg p-1 bg-white">
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+

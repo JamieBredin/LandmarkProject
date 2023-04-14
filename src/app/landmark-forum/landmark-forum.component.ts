@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Landmark } from '../landmark';
 import { LandmarkService } from '../landmark.service';
-
+import { ProfileComponent } from '../profile/profile.component';
+import { UserServiceService } from '../user-service.service';
 @Component({
   selector: 'app-landmark-forum',
   templateUrl: './landmark-forum.component.html',
@@ -10,21 +11,23 @@ import { LandmarkService } from '../landmark.service';
 })
 export class LandmarkForumComponent implements OnInit {
 
-  constructor(private landmarkService : LandmarkService) { }
+  constructor(private landmarkService : LandmarkService, private userService : UserServiceService) { }
   landmarkForm : FormGroup = new FormGroup({});
   message: String = ''
   @Input() landmark?: Landmark
-
+  userID!:String
+  currentUserRole!:String|undefined
   ngOnInit(): void {
+    this.currentUserRole = this.userService.getUserRole();
     this.landmarkForm = new FormGroup({
-      xCoordinates: new FormControl (''),        
-      yCoordinates: new FormControl (''),
-      zCoordinates: new FormControl(''),
-      countryName: new FormControl(''),
-      landmarkName: new FormControl(''),
-      townName: new FormControl(''),
-      countryCaptial: new FormControl(''),
-      notes: new FormControl('')
+      countryName: new FormControl(this.landmark?.countryName),
+      landmarkName: new FormControl(this.landmark?.landmarkName),
+      cityName: new FormControl(this.landmark?.cityName),
+      notes: new FormControl(this.landmark?.notes),
+      userID: new FormControl(
+        this.userService.getUserID())
+       //userID: new FormControl( this.userIDMethod()) 
+
   })
   }
 
@@ -68,7 +71,7 @@ loadEditData(id:string)
     });
     // so the updated list appears
     this.ngOnInit();
-    window.location.reload();
+    //window.location.reload();
 
   }
 
