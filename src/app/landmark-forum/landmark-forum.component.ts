@@ -71,7 +71,7 @@ loadEditData(id:string)
     });
     // so the updated list appears
     this.ngOnInit();
-    //window.location.reload();
+    window.location.reload();
 
   }
 

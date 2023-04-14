@@ -8,7 +8,7 @@ import { Landmark } from './landmark';
   providedIn: 'root'
 })
 export class LandmarkService {
-private dataUri = `${environment.apiUri}/landmarks`;
+public dataUri = `${environment.apiUri}/landmarks`;
   constructor(private http: HttpClient) { }
 
   getLandmarks():Observable<Landmark[]>{
