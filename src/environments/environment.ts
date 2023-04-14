@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUri : 'http://localhost:3000',//change this to api gateway
-  //apiUri: ' https://x0wafkcyt7.execute-api.eu-west-1.amazonaws.com/dev',
+  //apiUri : 'http://localhost:3000',//change this to api gateway
+  apiUri: ' https://x0wafkcyt7.execute-api.eu-west-1.amazonaws.com/dev',
   auth0:
   {
     domain:'dev-giq6rr8zna5v1l02.us.auth0.com',
