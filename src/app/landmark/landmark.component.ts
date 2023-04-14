@@ -31,6 +31,7 @@ export class LandmarkComponent implements OnInit {
 updateLandmark()
 {
   this.showModal=true;
+  console.log('i am here');
 }
 changeBool()
 {

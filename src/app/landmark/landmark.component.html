@@ -57,12 +57,16 @@
     </div>
   </div>
 </div>
-
+</div>
     <div *ngIf='showModal'>
+      <div class="card">
+        <div class="card-body">
       <button type="button" id="close" (click)="changeBool()" data-bs-dismiss="modal" aria-label="Close">
-        Close
       </button>
+      
       <app-landmark-forum [landmark]="landmark"></app-landmark-forum>
+      </div>
+      </div>
     </div>
 
      
