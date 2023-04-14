@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body
+ {
+     padding: 0;
+     margin: 0;
+     background-image: url("pexels-leah-kelley-3935702.jpg");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center;
+     background-size: cover;
+     height: 100%;
+ }

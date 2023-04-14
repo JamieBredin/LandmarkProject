@@ -1,5 +1,7 @@
 <!-- User Side  -->
 <div *ngIf="currentUserRole !== 'Admin'" class="container text-center">
+  <div class="card">
+    <div class="card-body">
   <div class="row" style="padding: 10px;">
     <div class="col" >
       {{landmark.countryName}}
@@ -19,13 +21,16 @@
       <button type="button" class="btn btn-danger" (click)="deleteCurrentLandmark(landmark._id)">Delete</button>
     </div>
     <div>
-      
+      </div>
+      </div>
       
     </div>
   </div>
 </div>
 <!-- Admin Side  -->
 <div *ngIf="currentUserRole === 'Admin'" class="container text-center">
+  <div class="card">
+    <div class="card-body">
   <div class="row" style="padding: 10px;">
     <div class="col" >
       {{landmark.countryName}}
@@ -39,7 +44,7 @@
     <div class="col" >
       {{landmark.notes}}
     </div>
-    <div *ngIf="currentUserRole==='Admin'"class="col-2" >
+    <div *ngIf="currentUserRole==='Admin' && landmark.userID !== '1' "class="col-2" >
       {{landmark.userID}}
     </div>
     <div class="col-4">
@@ -48,6 +53,7 @@
     <div>
       
       
+    </div>
     </div>
   </div>
 </div>

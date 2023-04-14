@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'landmarks',component: LandmarkListComponent, canActivate:[AuthGuard]},
   {path: 'profile', component: ProfileComponent,
   canActivate:[AuthGuard]},
-  {path:'trending', component: TrendingListComponent}
+  {path:'trending', component: TrendingListComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

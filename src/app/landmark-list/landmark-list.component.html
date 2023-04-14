@@ -1,22 +1,21 @@
 
-<h2>your Landmark Tracker</h2>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add</button>
 
 <div class="container text-center">
   <div class="row">
-    <div class="col">
+    <div class="col" id="bigFont">
       Country Name
     </div>
-    <div class="col">
+    <div class="col" id="bigFont">
       Landmark Name
     </div>
-    <div class="col">
+    <div class="col" id="bigFont">
     City Name
     </div>
-    <div class="col">
+    <div class="col" id="bigFont">
       Notes
     </div>
-    <div *ngIf="currentUserRole==='Admin'"class="col-2">
+    <div id="bigFont" *ngIf="currentUserRole==='Admin'"class="col-2">
       User ID
     </div>
     <div class="col-4">
@@ -28,11 +27,11 @@
  <div *ngIf="currentUserRole !== undefined && currentUserRole !== 'Admin'">
 
 <div *ngFor='let l of landmarks; let i = index'>
-  <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
+  <div *ngIf="i%2===0">
     <app-landmark  *ngIf="l.userID === currentUserID" [landmark]="l">
   </app-landmark>
   </div>
-  <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
+  <div *ngIf="i%2!==0">
 <app-landmark  *ngIf="l.userID === currentUserID" [landmark]="l">
   </app-landmark>
   </div>
@@ -42,11 +41,11 @@
 
  <div *ngIf="currentUserRole !== undefined && currentUserRole === 'Admin'">
   <div *ngFor='let l of landmarks; let i = index' >
-    <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
+    <div *ngIf="i%2===0">
       <app-landmark [landmark]="l">
     </app-landmark>
     </div>
-    <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
+    <div *ngIf="i%2!==0">
   <app-landmark  [landmark]="l">
     </app-landmark>
     </div>

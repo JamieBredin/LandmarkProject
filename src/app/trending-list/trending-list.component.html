@@ -2,16 +2,16 @@
 
 <div class="container text-center">
     <div class="row">
-      <div class="col">
+      <div class="col" id="bigFont">
         Country Name
       </div>
-      <div class="col">
+      <div class="col" id="bigFont">
         Landmark Name
       </div>
-      <div class="col">
+      <div class="col" id="bigFont">
       City Name
       </div>
-      <div class="col">
+      <div class="col" id="bigFont">
         Notes
       </div>
       <div *ngIf="currentUserRole === 'Admin'" class="col">
@@ -22,11 +22,11 @@
 
   </div>
   <div *ngFor='let l of landmarks; let i = index'>
-    <div *ngIf="i%2===0" style="background-color: rgb(218, 218, 218)">
+    <div *ngIf="i%2===0">
       <app-landmark  *ngIf="l.userID === '1'" [landmark]="l">
     </app-landmark>
     </div>
-    <div *ngIf="i%2!==0" style="background-color: rgb(194, 192, 192)">
+    <div *ngIf="i%2!==0" >
   <app-landmark   *ngIf="l.userID === '1'" [landmark]="l">
     </app-landmark>
     </div>

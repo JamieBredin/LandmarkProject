@@ -38,4 +38,9 @@
   #close:after {
     transform: rotate(-45deg);
   }
+  #bigFont
+  {
+    font-size: large;
+    font-weight: bold;
+  }
   
